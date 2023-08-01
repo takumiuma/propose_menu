@@ -20,7 +20,7 @@ public class MenuDao {
 		connection = DriverManager.getConnection(url, user, password);
 	}
 
-	// java_web_systemデータベースとの切断するメソッド
+	// データベースとの切断するメソッド
 	public void close() {
 		try {
 			if (connection != null) {
@@ -44,9 +44,6 @@ public class MenuDao {
 					+ "ON menu_list.eating_category_id = eating_category_list.category_id\n"
 					+ "ORDER BY RAND() LIMIT 1";
 			pstatement = connection.prepareStatement(sql);
-			// INパラメータは以下の通り
-			// pstatement.setInt(1,);
-			// SQL発行し、抽出結果が格納されたResultSetオブジェクトから値を取得
 			rs = pstatement.executeQuery();
 			while (rs.next()) {
 				menuList.add(rs.getString("menu_name"));
@@ -70,7 +67,6 @@ public class MenuDao {
 		ResultSet rs = null;
 		ArrayList<String> menuList = new ArrayList<String>();
 		try {
-			// SQLを保持するPreparedStatementオブジェクトの生成
 			String sqlAdd = "WHERE (";
 			for (int i = 0; i < genre.length; i++) {
 				if (i == genre.length - 1) {
