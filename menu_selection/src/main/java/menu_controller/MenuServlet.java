@@ -35,6 +35,10 @@ public class MenuServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
+		String[] genre = {"和食","中華料理","洋食","韓国料理","ファーストフード","その他"};
+		String[] category = {"肉","魚","野菜","ご飯もの","麺類","パン","スープ・汁物","その他"};
+		request.setAttribute("genre", genre);
+		request.setAttribute("category",category);
 		ServletContext context = getServletContext();
 		RequestDispatcher dispatcher = context.getRequestDispatcher("/menuForm.jsp");
 		dispatcher.forward(request, response);
@@ -70,7 +74,7 @@ public class MenuServlet extends HttpServlet {
 				} else if (genre == null || category == null) {
 					message = "少なくともジャンルかカテゴリに１つずつチェックをつけてください";
 					request.setAttribute("message", message);
-					
+
 				} else if (detail != null) {
 					MenuDao dao = new MenuDao();
 					ArrayList<String> menuList = dao.getDetailList(request);

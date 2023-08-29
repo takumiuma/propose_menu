@@ -13,10 +13,10 @@ public class MenuDao {
 	private Connection connection;
 
 	public MenuDao() throws ClassNotFoundException, SQLException {
-		Class.forName("XXXXXXXXXXXX");
-		String url = "XXXXXXXXXXXX";
-		String user = "XXXXXX";
-		String password = "XXXXXX";
+		Class.forName("hogehoge");
+		String url = "hogehoge";
+		String user = "hogehoge";
+		String password = "hogehoge";
 		connection = DriverManager.getConnection(url, user, password);
 	}
 

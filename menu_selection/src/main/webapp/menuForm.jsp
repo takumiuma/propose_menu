@@ -1,8 +1,17 @@
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Arrays" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%
+String[] genre = request.getParameterValues("genre");
+String[] category = request.getParameterValues("category");
+if(genre == null && category == null){
+	genre = (String[])request.getAttribute("genre");
+	category = (String[])request.getAttribute("category");
+}
+%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -31,7 +40,7 @@
   </header>
   <main>
     <c:if test="${not empty requestScope.message }">
-      <p class= "comment">${requestScope.message }</p>
+      <p class= "comment"><font color="red">${requestScope.message }</font></p>
     </c:if>
     
   <div class="container text-center">
@@ -51,26 +60,54 @@
  　　　　　　 <div class="card-body">
     　　　　　　<h5 class="card-title">ジャンル</h5>
     　　　　　　　　
-           　　　　　<p class="check text-center"><label><input type="checkbox" name="genre" value="和食" checked>和食</label></p>
-           　　　　　<p class="check text-center"><label><input type="checkbox" name="genre" value="中華料理" checked>中華料理</label></p>
-           　　　　　<p class="check text-center"><label><input type="checkbox" name="genre" value="洋食" checked>洋食</label></p>
-           　　　　　<p class="check text-center"><label><input type="checkbox" name="genre" value="韓国料理" checked>韓国料理</label></p>
-           　　　　　<p class="check text-center"><label><input type="checkbox" name="genre" value="ファーストフード" checked>ファーストフード</label></p>
-           　　　　　<p class="check text-center"><label><input type="checkbox" name="genre" value="その他" checked>その他</label></p>
+           　　　　　<p class="check text-center"><label><input type="checkbox" name="genre" value="和食" 
+           			<% if (genre != null && Arrays.asList(genre).contains("和食"))
+           				out.print("checked"); %>>和食</label></p>
+           　　　　　<p class="check text-center"><label><input type="checkbox" name="genre" value="中華料理" 
+           			<% if (genre != null && Arrays.asList(genre).contains("中華料理"))
+           				out.print("checked"); %>>中華料理</label></p>
+           　　　　　<p class="check text-center"><label><input type="checkbox" name="genre" value="洋食" 
+           			<% if (genre != null && Arrays.asList(genre).contains("洋食"))
+           				out.print("checked"); %>>洋食</label></p>
+           　　　　　<p class="check text-center"><label><input type="checkbox" name="genre" value="韓国料理" 
+           			<% if (genre != null && Arrays.asList(genre).contains("韓国料理"))
+           				out.print("checked"); %>>韓国料理</label></p>
+           　　　　　<p class="check text-center"><label><input type="checkbox" name="genre" value="ファーストフード" 
+           			<% if (genre != null && Arrays.asList(genre).contains("ファーストフード"))
+           				out.print("checked"); %>>ファーストフード</label></p>
+           　　　　　<p class="check text-center"><label><input type="checkbox" name="genre" value="その他" 
+           			<% if (genre != null && Arrays.asList(genre).contains("その他"))
+           				out.print("checked"); %>>その他</label></p>
     　　　　　　　　
   　　　　　　</div>
 　　　　　　</div>
 　　　　　　<div class="card" style="width: 18rem;">
   　　　　　　<div class="card-body">
     　　　　　　<h5 class="card-title">カテゴリ</h5>
-           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="肉" checked>肉</label></p>
-           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="魚" checked>魚</label></p>
-           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="野菜" checked>野菜</label></p>
-           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="ご飯もの" checked>ご飯もの</label></p>
-           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="麺類" checked>麺類</label></p>
-           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="パン" checked>パン</label></p>
-           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="スープ・汁物" checked>スープ・汁物</label></p>
-           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="その他" checked>その他</label></p>
+           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="肉" 
+           			<% if (category != null && Arrays.asList(category).contains("肉"))
+           				out.print("checked"); %>>肉</label></p>
+           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="魚" 
+           			<% if (category != null && Arrays.asList(category).contains("魚"))
+           				out.print("checked"); %>>魚</label></p>
+           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="野菜" 
+           			<% if (category != null && Arrays.asList(category).contains("野菜"))
+           				out.print("checked"); %>>野菜</label></p>
+           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="ご飯もの" 
+           			<% if (category != null && Arrays.asList(category).contains("ご飯もの"))
+           				out.print("checked"); %>>ご飯もの</label></p>
+           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="麺類" 
+           			<% if (category != null && Arrays.asList(category).contains("麺類"))
+           				out.print("checked"); %>>麺類</label></p>
+           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="パン" 
+           			<% if (category != null && Arrays.asList(category).contains("パン"))
+           				out.print("checked"); %>>パン</label></p>
+           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="スープ・汁物" 
+           			<% if (category != null && Arrays.asList(category).contains("スープ・汁物"))
+           				out.print("checked"); %>>スープ・汁物</label></p>
+           　　　　　<p class="check text-center"><label><input type="checkbox" name="category" value="その他" 
+           			<% if (category != null && Arrays.asList(category).contains("その他"))
+           				out.print("checked"); %>>その他</label></p>
   　　　　　　</div>
 　　　　　　</div>
           </div>
