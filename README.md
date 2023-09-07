@@ -1,7 +1,7 @@
 # メニューを提案してくれるアプリです
 https://menu-selection-de8489ad965d.herokuapp.com/menu
 
-![スクリーンショット 2023-08-01 18.54.01.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3476596/51669484-f175-adc0-0981-ce29b76b3aa4.png)
+![スクリーンショット 2023-09-07 9 56 23（2）](https://github.com/takumiuma/propose_menu/assets/136358705/b85af71b-a255-41ef-9eee-09c7fd578a12)
 
 
 ## Webアプリケーション制作に至った経緯
