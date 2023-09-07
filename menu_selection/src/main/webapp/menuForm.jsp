@@ -19,6 +19,7 @@ if(genre == null && category == null){
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>メニュー提案アプリ</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="style.css" rel="stylesheet">
   <style type="text/css">
   .check{
      margin : 0px ;
@@ -123,26 +124,34 @@ if(genre == null && category == null){
     <div class="col">
     <c:if test="${not empty requestScope.menuList }">
     <h3>【検索結果】</h3>
-     <div class="col-5 ml-3">
+     <div >
     <table class="table table-striped">
     <thead>
         <tr>
-            <th>メニューNo.</th>
-            <th>料理名</th>
+            <th>メニュー</th>
+            <th>近くのお店検索</th>
+            <th>レシピを検索</th>
         </tr>
     </thead>
     <tbody>  
     <% 
     ArrayList<String> menuList = (ArrayList<String>)request.getAttribute("menuList");
-    int count = 1;
     for(String menu : menuList){
     %>
     <tr>
-       <td><%=count %></td>
-       <td><%=menu %></td>
+    	<td><%=menu %></td>
+        <td>
+       		<form action="https://www.google.com/search" target="_blank">
+       			<input type="submit" class="btn btn-link" name="q" value="<%=menu %> お店 近く">
+       		</form>
+        </td>
+        <td>
+        	<form action="https://www.google.com/search" target="_blank">
+       			<input type="submit" class="btn btn-link" name="q" value="<%=menu %> レシピ">
+       		</form>
+        </td>
     </tr>
     <% 
-    count++;
     }
     %>
     </tbody>
